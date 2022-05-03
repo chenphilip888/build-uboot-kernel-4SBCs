@@ -1,4 +1,4 @@
-export OUT=~/build-uboot-kernel-4SBCs/radxa/out
+export OUT=$(PWD)/out
 export BOOT=$(OUT)/boot.img
 export ARCH=arm64
 export CROSS_COMPILE=/usr/local/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-

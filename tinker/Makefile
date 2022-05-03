@@ -1,4 +1,4 @@
-export OUT=~/build-uboot-kernel-4SBCs/tinker/out
+export OUT=$(PWD)/out
 export BOOT=$(OUT)/boot.img
 export ARCH=arm
 export CROSS_COMPILE=/usr/local/gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
