@@ -1,0 +1,62 @@
+This is to build u-boot and kernel for following SBC's:
+rpi4b  ( Raspberry Pi 4B )
+radxa  ( Rock Pi 4B plus )
+rk3328 ( Renegade ROC-RK3328-CC )
+tinker ( ASUS TinkerBoard )
+
+Steps to build u-boot and kernel:
+
+1. Install cross compiler:
+   wget https://releases.linaro.org/components/toolchain/binaries/7.3-2018.05/aarch64-linux-gnu/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu.tar.xz
+   sudo tar xvf gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu.tar.xz  -C /usr/local/
+   wget https://releases.linaro.org/components/toolchain/binaries/7.3-2018.05/arm-linux-gnueabihf/gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz
+   sudo tar xvf gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz -C /usr/local/
+
+2. git clone https://github.com/chenphilip888/build-uboot-kernel-4SBCs.git
+
+3. cd ~/build-uboot-kernel-4SBCs/rpi4b
+   git clone https://github.com/raspberrypi/linux --depth=1 -b rpi-5.4.y
+   cd linux; mkdir tmp; cd tmp; mkdir lib;
+   cd ~/build-uboot-kernel-4SBCs/rpi4b; mkdir out;
+
+   make kernel
+   The result is in ~/build-uboot-kernel-4SBCs/rpi4b/out/boot.img
+   The modules are in ~/build-uboot-kernel-4SBCs/rpi4b/linux/tmp/lib/modules
+
+4. cd ~/build-uboot-kernel-4SBCs/radxa
+   git clone https://github.com/radxa/u-boot -b stable-4.4-rockpi4
+   git clone https://github.com/radxa/kernel -b release-4.4-rockpi4
+   cd kernel; mkdir tmp; cd tmp; mkdir lib;
+   cd ~/build-uboot-kernel-4SBCs/radxa; mkdir out;
+
+   make u-boot
+   The results are in ~/build-uboot-kernel-4SBCs/radxa/out/* 
+   make kernel
+   The result is in ~/build-uboot-kernel-4SBCs/radxa/out/boot.img
+   The modules are in ~/build-uboot-kernel-4SBCs/radxa/kernel/tmp/lib/modules
+                      ~/build-uboot-kernel-4SBCs/radxa/kernel/tmp/lib/firmware
+
+5. cd ~/build-uboot-kernel-4SBCs/rk3328
+   git clone https://github.com/u-boot/u-boot
+   git clone https://github.com/FireflyTeam/kernel --depth=1 -b rk3328/firefly
+   cd kernel; mkdir tmp; cd tmp; mkdir lib;
+   cd ~/build-uboot-kernel-4SBCs/rk3328; mkdir out;
+
+   make u-boot
+   The results are in ~/build-uboot-kernel-4SBCs/rk3328/out/*
+   make kernel
+   The result is in ~/build-uboot-kernel-4SBCs/rk3328/out/boot.img
+   The modules are in ~/build-uboot-kernel-4SBCs/rk3328/kernel/tmp/lib/modules
+
+6. cd ~/build-uboot-kernel-4SBCs/tinker
+   git clone https://github.com/TinkerBoard/debian_u-boot.git -b release
+   git clone https://github.com/TinkerBoard/debian_kernel.git -b release
+   cd debian_kernel; mkdir tmp; cd tmp; mkdir lib;
+   cd ~/build-uboot-kernel-4SBCs/tinker; mkdir out;
+
+   make u-boot
+   The results are in ~/build-uboot-kernel-4SBCs/tinker/debian_u-boot/u-boot.img
+   make kernel
+   The result is in ~/build-uboot-kernel-4SBCs/tinker/out/boot.img
+   The modules are in ~/build-uboot-kernel-4SBCs/tinker/debian_kernel/tmp/lib/modules
+
