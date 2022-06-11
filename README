@@ -13,50 +13,50 @@ Steps to build u-boot and kernel:
    sudo tar xvf gcc-linaro-7.3.1-2018.05-x86_64_arm-linux-gnueabihf.tar.xz -C /usr/local/
 
 2. git clone https://github.com/chenphilip888/build-uboot-kernel-4SBCs.git
+   sudo apt-get install build-essential git libssl-dev nmap net-tools libncurses5-dev libncursesw5-dev dnsutils vsftpd ftp binfmt-support qemu-user-static scons libncurses5-dev libncursesw5-dev libdbus-glib-1-dev libbluetooth-dev python-dev python-setuptools python3-dev python3-pip python3-setuptools libcurl4-openssl-dev gettext dbus-x11 chrpath diffstat gawk texinfo curl flex bison device-tree-compiler python swig
 
 3. cd ~/build-uboot-kernel-4SBCs/rpi4b
    git clone https://github.com/raspberrypi/linux --depth=1 -b rpi-5.4.y
    cd linux; mkdir tmp; cd tmp; mkdir lib;
-   cd ~/build-uboot-kernel-4SBCs/rpi4b; mkdir out;
+   cd ../../; mkdir out;
 
    make kernel
-   The result is in ~/build-uboot-kernel-4SBCs/rpi4b/out/boot.img
-   The modules are in ~/build-uboot-kernel-4SBCs/rpi4b/linux/tmp/lib/modules
+   The result is in ./out/boot.img
+   The modules are in ./linux/tmp/lib/modules
 
 4. cd ~/build-uboot-kernel-4SBCs/radxa
-   git clone https://github.com/radxa/u-boot -b stable-4.4-rockpi4
-   git clone https://github.com/radxa/kernel -b release-4.4-rockpi4
+   git clone https://github.com/radxa/u-boot --depth=1 -b stable-4.4-rockpi4
+   git clone https://github.com/radxa/kernel --depth=1 -b release-4.4-rockpi4
    cd kernel; mkdir tmp; cd tmp; mkdir lib;
-   cd ~/build-uboot-kernel-4SBCs/radxa; mkdir out;
+   cd ../../; mkdir out;
 
    make u-boot
-   The results are in ~/build-uboot-kernel-4SBCs/radxa/out/* 
+   The results are in ./out/* 
    make kernel
-   The result is in ~/build-uboot-kernel-4SBCs/radxa/out/boot.img
-   The modules are in ~/build-uboot-kernel-4SBCs/radxa/kernel/tmp/lib/modules
-                      ~/build-uboot-kernel-4SBCs/radxa/kernel/tmp/lib/firmware
+   The result is in ./out/boot.img
+   The modules are in ./kernel/tmp/lib/modules
+                      ./kernel/tmp/lib/firmware
 
 5. cd ~/build-uboot-kernel-4SBCs/rk3328
    git clone https://github.com/u-boot/u-boot
    git clone https://github.com/FireflyTeam/kernel --depth=1 -b rk3328/firefly
    cd kernel; mkdir tmp; cd tmp; mkdir lib;
-   cd ~/build-uboot-kernel-4SBCs/rk3328; mkdir out;
+   cd ../../; mkdir out;
 
    make u-boot
-   The results are in ~/build-uboot-kernel-4SBCs/rk3328/out/*
+   The results are in ./out/*
    make kernel
-   The result is in ~/build-uboot-kernel-4SBCs/rk3328/out/boot.img
-   The modules are in ~/build-uboot-kernel-4SBCs/rk3328/kernel/tmp/lib/modules
+   The result is in ./out/boot.img
+   The modules are in ./kernel/tmp/lib/modules
 
 6. cd ~/build-uboot-kernel-4SBCs/tinker
-   git clone https://github.com/TinkerBoard/debian_u-boot.git -b release
-   git clone https://github.com/TinkerBoard/debian_kernel.git -b release
+   git clone https://github.com/TinkerBoard/debian_u-boot.git --depth=1 -b release
+   git clone https://github.com/TinkerBoard/debian_kernel.git --depth=1 -b release
    cd debian_kernel; mkdir tmp; cd tmp; mkdir lib;
-   cd ~/build-uboot-kernel-4SBCs/tinker; mkdir out;
+   cd ../../; mkdir out;
 
    make u-boot
-   The results are in ~/build-uboot-kernel-4SBCs/tinker/debian_u-boot/u-boot.img
+   The results are in ./debian_u-boot/u-boot.img
    make kernel
-   The result is in ~/build-uboot-kernel-4SBCs/tinker/out/boot.img
-   The modules are in ~/build-uboot-kernel-4SBCs/tinker/debian_kernel/tmp/lib/modules
-
+   The result is in ./out/boot.img
+   The modules are in ./debian_kernel/tmp/lib/modules
